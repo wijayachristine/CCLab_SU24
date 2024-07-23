@@ -1,25 +1,3 @@
-
-
-// function setup() {
-//   let cnv = createCanvas(800, 500);
-//   cnv.parent("p5-canvas-container");
-  
-//   let startPoint = int(random(0, xLoc.length));
-
-//   // put a new x and y coordinate 
-//   circlesPointX.push(xLoc[startPoint] + 75);
-//   circlesPointY.push(yLoc[startPoint] + 50);
-//   // where the cirlce goes
-//   targets.push(int(random(0, xLoc.length)));
-  
-//   xArray.push(random(0, width));
-//   yArray.push(random(0, height));
-//   layersArray.push(0);
-//   deadArray.push(false); // creature start out alive
-//   radius.push(random(1, 2));
-//   creatureTargetArray.push(0);
-// }
-
 let angle = 45;
 let sinInput = 0;
 let x = 0;
@@ -51,16 +29,23 @@ let deadArray = [];
 let computerColors = ["blue","blue","blue","blue","blue"]; 
 let computerChangeColor = [];
 
-// let locationX = [];
-// let locationY = [];
+let locationX = [];
+let locationY = [];
+
+// let stillIntroducing = true;
 
 function setup() {
   createCanvas(800, 500);
-
+  
   let cnv = createCanvas(800, 500);
   cnv.parent("p5-canvas-container");
   
-  background("black");
+  background(0);
+  
+  for( let i = 0; i < 100; i++){
+    locationX.push(random(0,width));
+    locationY.push(random(0,height));
+  }
   
   let angle = 0;
   for(let x = 30; x < 300; x+=20){
@@ -83,32 +68,91 @@ function setup() {
 
 function draw() {
   background(0);
-
+  
+  //binary background 
   fill(255, 30);
   textSize(16);
-
-  push();
-  scale(0.5);
-  nyseBuilding();
-  weirdShapesBelowNYSE();
-  pop();
-
-  push();
-  scale(0.5);
-  graph();
-  pop();
   
-  clock();
-
-  stairs();
+  for(let i = 0; i < locationX.length; i++){
+    text('01011', locationX[i], locationY[i]);
+    text('10010', locationX[i]+60, locationY[i]);
+    text('11000', locationX[i]+120, locationY[i]);
+    text('00101', locationX[i]+180, locationY[i]);
+  }
   
-  push();
-  translate(250,175);
-  scale(0.6);
-  drawNetwork();
-  pop();
+  if(frameCount < 600){
+    push();
+    drawIntroScreen();
+    pop();
+  }else{ 
+        push();
+        scale(0.5);
+        nyseBuilding();
+        weirdShapesBelowNYSE();
+        pop();
 
- 
+        push();
+        scale(0.5);
+        graph();
+        pop();
+  
+        clock();
+
+        stairs();
+  
+        push();
+        translate(250,175);
+        scale(0.6);
+        drawNetwork();
+        pop();
+      
+  }
+}
+
+function drawIntroScreen(){
+    noStroke();
+    fill("white");
+    rect(100,100, 600,300);
+    fill("black");
+    textSize(16);
+    textFont('Akko Pro Medium');
+    text("You are a stock broker!", 320,140);
+    text("Every time you click the mouse,", 290, 160);
+    text("you are making a stock trade.", 300, 180);
+  
+    text("Keep making stock trades to feed the creatures!", 250, 210);
+    text("The creatures thrive in a high-activity environment.", 240, 230);
+  
+    text("If they feed enough,", 330, 260);
+    text("they will be able to explore the physical space for a moment.", 200, 280);
+
+    push();
+    fill('red');
+      translate(100,100);
+      rotate(0.5*PI);
+      text('NYSENYSENYSENYSENYSENYSENYSE', 0,0);
+    pop();
+  
+    push();
+      fill('red');
+      translate(100,100);
+      text('NYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSE', 0,300);
+    pop();
+  
+    push();
+      fill('red');
+      translate(700,400);
+      rotate(1.5*PI);
+      text('NYSENYSENYSENYSENYSENYSENYSE', 0,0);
+    pop();
+  
+    push();
+      fill('red');
+      translate(700,100);
+      rotate(1*PI);
+    text('NYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSENYSE', 0,0);
+    pop();
+    
 }
 
 function graph(){
@@ -258,7 +302,7 @@ function stockNum(){
   fill("green");
   textSize(15);
   textFont('Akko Pro Medium');
-  text('NDAQ  0.05%', 1255, 85);
+  text('CYW  0.05%', 1255, 85);
   pop();
   
   push();
@@ -302,7 +346,7 @@ function clock(){
 function nyseBuilding(){
   push();
   translate(0, 0);
-  fill(255);
+  fill("#9AAAD9");
   textAlign(LEFT);
   textSize(80);
   textFont('Akko Pro Medium');
@@ -316,7 +360,7 @@ function stairs(){
   push();
     translate(25.5, 250);
     noStroke();
-    fill(255);
+    fill("#9AAAD9");
     rect(0,0,20,20);
     rect(0,20,40,20);
     rect(0,40,60,20);
@@ -327,7 +371,7 @@ function stairs(){
     rect(0,140,160,20);
     rect(0,160,180,20);
     rect(0,180,200,20);
-    rect(0,199.5,260,25);
+    rect(0,200,260,25);
   pop();
 }
 
@@ -358,7 +402,7 @@ function weirdShapesBelowNYSE(){
 function drawNetwork() {
   push();
   noStroke();
-  fill(100);
+  fill("#9AAAD9");
   rect(0,0, 800, 500);
   pop();
   
@@ -375,7 +419,6 @@ function drawNetwork() {
     
   }
   
-  
   drawCables();
   
   makeFoodMove(); 
@@ -387,12 +430,6 @@ function drawNetwork() {
   makeCreaturesEat();
   drawCreatures();
   
-  
-  fill("white");
-  textSize(20);
-  text("You are a stock broker!", 320, 420);
-  text("Everytime you click the mouse, more creatures show up to eat the transactions", 190, 435);
-  text("Keep adding creatures for the stock market to continue moving!", 245, 450);
   
 }
 
@@ -668,7 +705,12 @@ function drawCreatures() {
 }
 
 function mousePressed(){
-  
-  createFood(); 
-  
-}
+
+      createFood();
+    }
+
+// function keyPressed() {
+//   if (key === ENTER) {
+//     stillIntroducing = false;
+//   }
+// }
