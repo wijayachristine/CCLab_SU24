@@ -39,8 +39,8 @@ let lastUpdate = 0;
 function setup() {
   createCanvas(800, 500);
   
-  // let cnv = createCanvas(800, 500);
-  // cnv.parent("p5-canvas-container");
+  let cnv = createCanvas(800, 500);
+  cnv.parent("p5-canvas-container");
   
   background(0);
   
@@ -141,6 +141,7 @@ function drawIntroScreen(){
   }
   
   // Display the countdown number
+
   push();
   fill(0);
   textSize(20);
