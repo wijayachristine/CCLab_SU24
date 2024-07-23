@@ -32,13 +32,15 @@ let computerChangeColor = [];
 let locationX = [];
 let locationY = [];
 
-// let stillIntroducing = true;
+let countdownNum = 10; 
+let interval = 60; 
+let lastUpdate = 0; 
 
 function setup() {
   createCanvas(800, 500);
   
-  let cnv = createCanvas(800, 500);
-  cnv.parent("p5-canvas-container");
+  // let cnv = createCanvas(800, 500);
+  // cnv.parent("p5-canvas-container");
   
   background(0);
   
@@ -114,6 +116,7 @@ function drawIntroScreen(){
     fill("white");
     rect(100,100, 600,300);
     fill("black");
+    
     textSize(16);
     textFont('Akko Pro Medium');
     text("You are a stock broker!", 320,140);
@@ -123,8 +126,26 @@ function drawIntroScreen(){
     text("Keep making stock trades to feed the creatures!", 250, 210);
     text("The creatures thrive in a high-activity environment.", 240, 230);
   
-    text("If they feed enough,", 330, 260);
-    text("they will be able to explore the physical space for a moment.", 200, 280);
+  
+    text("Make sure to continue making stock trades.", 260, 260);
+    text("The computers will turn pink if the trade goes through!", 230, 280);
+  
+  
+   
+    if (frameCount - lastUpdate >= interval) {
+      if (countdownNum > 1) {
+      countdownNum--; 
+    }
+      
+    lastUpdate = frameCount; 
+  }
+  
+  // Display the countdown number
+  push();
+  fill(0);
+  textSize(20);
+  text(countdownNum, 400,350);
+  pop();
 
     push();
     fill('red');
@@ -710,7 +731,4 @@ function mousePressed(){
     }
 
 // function keyPressed() {
-//   if (key === ENTER) {
-//     stillIntroducing = false;
-//   }
-// }
+
