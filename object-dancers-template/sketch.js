@@ -50,21 +50,21 @@ class christineDancer {
     this.headY = -25; 
     this.headSpeed = 1; 
 
-    this.movingArms = true;
+    this.movingArms = true; //arms moving is true
     
   }
   update(){
 
     //stop it from moving for a bit
-    if(frameCount % 300 == 0) {
-      if(this.movingArms == false) {
+    if(frameCount % 300 == 0) { //after 300frames
+      if(this.movingArms == false) { // if moving arms is false, it becomes true
         this.movingArms = true;
-      } else if(this.movingArms == true) {
+      } else if(this.movingArms == true) { // if it is true, it becomes false
         this.movingArms = false;
       }
     }
 
-    if(this.movingArms == false)
+    if(this.movingArms == false) // checks if moving arms is false 
       return;
 
     // update properties here to achieve
@@ -150,7 +150,7 @@ class christineDancer {
     // it is using "this" because this function, too, 
     // is a part if your Dancer object.
     // comment it out or delete it eventually.
-    this.drawReferenceShapes();
+    // this.drawReferenceShapes();
 
     pop();
   }
