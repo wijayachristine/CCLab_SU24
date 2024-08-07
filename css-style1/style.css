@@ -1,0 +1,60 @@
+body{
+    background-color: rgb(34, 143, 56);
+}
+
+p{
+    color: black;
+    font-size: 28px;
+}
+
+.description{
+    text-decoration: underline; 
+}
+
+#vip{
+    font-weight: bold;
+    color: yellow;
+
+    /* in relation to its og position */
+    position: relative;
+    bottom:10px;
+}
+
+.textbox{
+    background-color: cadetblue;
+
+    border-color: white;
+    border-style: dotted;
+    border-width: 3px;
+
+    margin: 10px;
+    padding: 15px;
+    padding-left: 50px;
+
+    width: 400px;
+}
+
+#canvas-cousin{
+    margin-bottom: 100px;
+}
+
+.one{
+    /* it kind of places itself above everything else, anywhere, once the position is "absolute" */
+    position: absolute; 
+    left: 550px; 
+    top: 100px; 
+}
+
+.two{
+    /* stays whenever you move according to your browser window */
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
+.three{
+    /* change it in relation to its natural spot so in this case */
+    /* the position of where textbox is to begin with */
+    position: relative;
+    left: 50px;
+}

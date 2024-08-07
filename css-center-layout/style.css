@@ -1,0 +1,25 @@
+body{
+    background-color: rgb(34, 143, 56);
+}
+
+#main{
+    background-color: bisque;
+    width: 900px;
+    margin: auto;
+}
+
+#canvas-cousin{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+   background-color: aquamarine;
+   width: 50%;
+   margin: auto;
+   margin-top: 10px; 
+   text-wrap: pretty;
+}

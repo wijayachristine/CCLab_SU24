@@ -1,0 +1,55 @@
+body{
+    background-color: white;
+    padding-top: 50px;
+}
+#main{
+    width: 900px;
+    margin: auto;
+}
+
+
+#canvas-cousin{
+    text-align: center;
+    position: relative; 
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+   width: 50%;
+   margin: auto;
+   padding-right: 500px;
+   text-align: left;
+   text-wrap: pretty;
+   font-size: 28px;
+}
+
+#green{
+    color: green;
+    font-style: italic;
+
+}
+
+#red{
+    color: red;
+    font-style: italic;
+}
+
+#button{
+    text-align: center;
+}
+
+#sketch-button {
+    margin: auto;
+    margin-top: 20px; 
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 28px;
+    background-color: #2c3e50;
+    color: white; 
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer; 
+}

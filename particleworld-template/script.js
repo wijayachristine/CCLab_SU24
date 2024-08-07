@@ -70,7 +70,7 @@ class Particle {
 
     this.photo = img; 
   }
-  // methods (functions): particle's behaviors
+  // particle's behaviors
   update() {
     this.x += this.xSpeed;
     this.y += this.ySpeed; 
