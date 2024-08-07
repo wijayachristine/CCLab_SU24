@@ -56,12 +56,13 @@ function draw() {
     }
       noStroke();
       fill(255,255,255,30);
+    
       ellipse(825, 790, ellipseW, ellipseH);
   }
   
-  if(frameCount % 70 == 0){
-    ellipseW += 4;
-    ellipseH += 2;
+  if(table1.rotationAngle>=90){
+    ellipseW += 0.2;
+    ellipseH += 0.1;
   }
 
   for (let i = 0; i < vodkaPar.length; i++) {

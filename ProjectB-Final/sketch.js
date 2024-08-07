@@ -15,6 +15,15 @@ let no8Image;
 //bg
 let brainSynapsesImg;
 
+//dragging pls work
+let isDragging = false;
+
+let initialMouseX;
+let initialMouseY;
+
+let canvasTranslatedX = 0;
+let canvasTranslatedY = 0; 
+
 function preload(){
   no1Image = loadImage("assets/No_1_Childhood.png");
   no2Image = loadImage("assets/No_2_Bullying.png");
@@ -63,13 +72,13 @@ function setup() {
 
   function draw() {
     push();
-    translate(width/2, height/2)
+    translate(width/2 + canvasTranslatedX, height/2 + canvasTranslatedY)
     scale(scaleFactor*0.38);
     image(brainSynapsesImg, -(width*5)/2, -(height*5)/2, width*5, height*5);
     pop();
 
     push();
-    translate(width/2, height/2);
+    translate(width/2 + canvasTranslatedX, height/2 + canvasTranslatedY);
     scale(scaleFactor);
 
     // rect(-width*10/2,-height*10/2,width*10,height*10)
@@ -130,11 +139,14 @@ function setup() {
     checkIfPressed(mouseX, mouseY){
 
       
-      let mXScaledTranslated = mouseX/scaleFactor - (width/2)/scaleFactor
-      let mYScaledTranslated = mouseY/scaleFactor - (height/2)/scaleFactor
+      // let mXScaledTranslated = mouseX/scaleFactor - (width/2)/scaleFactor
+      // let mYScaledTranslated = mouseY/scaleFactor - (height/2)/scaleFactor
       // console.log(mXScaledTranslated)
 
-      let distance = dist(mXScaledTranslated, mYScaledTranslated, this.x, this.y);
+      let adjustedMouseX = (mouseX - width/2 - canvasTranslatedX) / scaleFactor;
+      let adjustedMouseY = (mouseY - height/2 - canvasTranslatedY) / scaleFactor;
+      let d = dist(adjustedMouseX, adjustedMouseY, this.x, this.y);
+      // let distance = dist(mXScaledTranslated, mYScaledTranslated, this.x, this.y);
       // console.log(mouseX-width/2, mouseY-height/2, this.x, this.y);
       // console.log("distance", distance)
       let radius = this.imgSize/2;
@@ -156,6 +168,11 @@ function setup() {
 
 
 function mousePressed(){
+
+    initialMouseX = mouseX; 
+    initialMouseY = mouseY;
+    isDragging = true; 
+
     for(let i = 0; i < objects.length; i++){
       if(objects[i].checkIfPressed(mouseX, mouseY)){
         console.log(objects[i].type  + "clicked");
@@ -183,4 +200,17 @@ function mousePressed(){
       }
     }
   }
+
+function mouseDragged(){
+  if(isDragging){
+    canvasTranslatedX += mouseX - initialMouseX;
+    canvasTranslatedY += mouseY - initialMouseY;
+    initialMouseX = mouseX;
+    initialMouseY = mouseY;
+  }
+}
+
+function mouseReleased(){
+  isDragging = false; 
+}
 
