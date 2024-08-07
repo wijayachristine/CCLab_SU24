@@ -83,7 +83,6 @@ function setup() {
 
     }
     display(){
-
       push();
       fill(29,29,29);
       rect(this.x, this.y, 725, 415);
