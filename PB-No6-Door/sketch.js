@@ -5,6 +5,11 @@ let vodkaImg;
 let handImg; 
 let titosImg; 
 
+let partybgImg; 
+let tableImg; 
+
+let partymusic;
+
 let ellipseW = 20;
 let ellipseH = 10; 
 
@@ -24,6 +29,10 @@ function preload() {
   vodkaImg = loadImage("assets/vodka.png");
   titosImg = loadImage("assets/titos.png");
   handImg = loadImage("assets/hand.png");
+  partybgImg = loadImage("assets/partybg.PNG");
+  tableImg = loadImage("assets/table.png");
+
+  partymusic = loadSound("assets/partymusic.mp3");
 }
 // draw hand as cursor, vodka bottle falls and then vodka pours
 
@@ -41,14 +50,19 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(partybgImg);
   //college table + alc bottles + party + noises
+  push();
+  scale(0.5);
+  image(tableImg, 100, 600);
+  pop();
+
   table1.display();
 
   if(table1.update() === true){
     if(table1.rotationAngle >= 90){
       for (let i = 0; i < num_vodka_par; i++) {
-        vodkaPar.push(new Particle(825, 380));
+        vodkaPar.push(new Particle(825, 480));
       }for (let i = 0; i < vodkaPar.length; i++) {
         vodkaPar[i].display();
         vodkaPar[i].update();
@@ -56,7 +70,6 @@ function draw() {
     }
       noStroke();
       fill(255,255,255,30);
-    
       ellipse(825, 790, ellipseW, ellipseH);
   }
   
@@ -110,7 +123,7 @@ class Table {
 
   update(){
     // console.log('mouse X', mouseX, 'mouseY', mouseY);
-    if(mouseX > 580 && mouseY > 190 && mouseX < 630 && mouseY < 250){
+    if(mouseX > 580 && mouseY > 290 && mouseX < 630 && mouseY < 350){
       let d = dist(pmouseX, pmouseY, mouseX, mouseY);
       console.log(d)
       if(d>35 && pmouseX < mouseX){
@@ -130,15 +143,15 @@ class Table {
 
   display() {
     push();
-    translate(100,0);
+    translate(100,100);
     fill(255);
     noStroke();
-     
-      quad(0, 500, 600, 500, 800, 300, 200, 300);
-      rect(0, 500, 20, 200);
-      rect(200, 500, 20, 100);
-      rect(580, 500, 20, 200);
-      rect(780, 300, 20, 250);
+
+      // quad(0, 500, 600, 500, 800, 300, 200, 300);
+      // rect(0, 500, 20, 200);
+      // rect(200, 500, 20, 100);
+      // rect(580, 500, 20, 200);
+      // rect(780, 300, 20, 250);
     
     
       push();
@@ -252,6 +265,12 @@ display () {
   circle(this.x, this.y, 20);
 pop();
 }
+}
+
+function mousePressed(){
+  if(partymusic.isPlaying() == false){
+    partymusic.play();
+  }
 }
 
 

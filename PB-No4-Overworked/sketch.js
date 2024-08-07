@@ -5,6 +5,7 @@ let pinkNotesImg;
 let blueNotesImg; 
 let greenNotesImg; 
 let typingSound; 
+let officeSound; 
 
 let computer1;
 let keyboard1;
@@ -16,7 +17,7 @@ function preload(){
   pinkNotesImg = loadImage("assets/pinkNotes.png");
   blueNotesImg = loadImage("assets/blueNotes.png");
   greenNotesImg = loadImage("assets/greenNotes.png");
-  typingSound = loadSound("assets/keyboard-typing.mp3");
+  officeSound = loadSound("assets/busyoffice.mp3");
 }
 
 function setup() {
@@ -46,8 +47,8 @@ function setup() {
   }
 
   function keyPressed(){
-      if(typingSound.isPlaying() == false){
-        typingSound.play();
+      if(officeSound.isPlaying() == false){
+        officeSound.loop();
     }
     computer1.update();
     // keyboard1.update();

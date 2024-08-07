@@ -52,7 +52,7 @@ function setup() {
     background(backgroundImg);
 
       textSize(20);
-      text("Press the 'w' key", 10, 30);
+      text("Press the 'w' & 's' key", 10, 30);
   
 
     if(keyIsPressed){

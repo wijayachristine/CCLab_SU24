@@ -7,9 +7,11 @@ let rapidBreathSound;
 let dizzy = [];
 let numDizzy = 10; 
 
+let showText = false; 
+let actualText = "As I sat down on my bathroom floor in my home in Indonesia, I could feel my heart beating out of my chest. My bathroom was my safe space—an odd choice, perhaps, but when I needed to take a breather, it was the place with the least amount of noise and the most privacy. This was an unfamiliar feeling; it was the first panic attack I had ever experienced. It happened after I didn’t get a grade that was satisfactory to me—not to my parents, not to anyone else, but to me. I felt like I was a failure and letting everyone down. My breathing became rapid and shallow, as if I couldn’t get enough air no matter how hard I tried. My vision blurred, the edges of the room dissolving into a hazy fog. My hands trembled uncontrollably, and a wave of dizziness washed over me, making it hard to stay upright. It felt like the walls were closing in, pressing on my chest, and I was overwhelmed by an inexplicable sense of dread. Every sound seemed amplified, yet distant, and I struggled to focus on anything. Panic attacks can manifest differently for everyone, but in that moment, I felt utterly trapped in my own body, desperate for it to end."
+
 function preload(){
   heartImg = loadImage("assets/heart.png");
-
   heartBeatSound = loadSound("assets/rapid-heartbeat.wav");
   rapidBreathSound = loadSound("assets/rapid-breathing.wav");
 
@@ -57,6 +59,13 @@ function setup() {
       dizzy[i].update();
     }
 
+    //para
+    if(showText){
+      fill(255);
+      textSize(14);
+      textAlign(CENTER, CENTER);
+      text(actualText, 0, 0, width - 5, height - 10);
+    }
 
   }
 
@@ -207,8 +216,9 @@ function setup() {
     }if(rapidBreathSound){
       rapidBreathSound.loop();
     }
+    showText = !showText;
   }
-    // rapidBreathSound.play();
+  
 
 
 

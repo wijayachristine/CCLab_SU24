@@ -187,8 +187,8 @@ function mousePressed(){
       this.photo = createImg;
 
       this.xSpeed = 1; 
-      this.max = 1050;
-      this.min = 635;
+      this.max = 850;
+      this.min = 630;
   
     }
 
