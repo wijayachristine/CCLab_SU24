@@ -4,6 +4,7 @@ let numParticles = 2000;
 
 let pplImg; 
 let womanImg; 
+let bullySound;
 
 // closer ones look at you 
 // make them turn depending on the direction that they walk 
@@ -13,6 +14,7 @@ function preload(){
   // sound will be narration of bullying
   pplImg = loadImage("assets/ppl.png");
   womanImg = loadImage("assets/women.png");
+  bullySound = loadSound("assets/Bullying.mp3");
 
 }
 
@@ -39,6 +41,9 @@ function setup() {
     if(mouseIsPressed){
       particle1.x = mouseX;
       particle1.y = mouseY;
+      if(bullySound.isPlaying() == false){
+        bullySound.play();
+      }
     }
 
     particle1.display();

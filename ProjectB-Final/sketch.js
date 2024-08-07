@@ -155,7 +155,7 @@ function setup() {
 
       // check if d is smaller than imgSize/2 times scalefactor
 
-      if(distance < radius){
+      if(d < radius){
         return true;
       }else{
         return false; 
