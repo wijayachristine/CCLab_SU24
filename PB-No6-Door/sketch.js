@@ -28,7 +28,8 @@ function preload() {
   scotchImg = loadImage("assets/scotch.png");
   vodkaImg = loadImage("assets/vodka.png");
   titosImg = loadImage("assets/titos.png");
-  handImg = loadImage("assets/hand.png");
+  handImg = loadImage("assets/hand.PNG");
+  //sjdbnajksbdf
   partybgImg = loadImage("assets/partybg.PNG");
   tableImg = loadImage("assets/table.png");
 

@@ -20,8 +20,9 @@ let minSize = 20;
 
 function preload(){
     backgroundImg = loadImage("assets/backgroundtaxi.jpg");
-    creature1Img = loadImage("assets/child.png");
-    creature2Img = loadImage("assets/adult.png");
+    creature1Img = loadImage("assets/child.PNG");
+    //adfsaf
+    creature2Img = loadImage("assets/adult.PNG");
 
     clothesline = loadImage("assets/clothes.png");
     useless = loadImage("assets/useless.png"); 
