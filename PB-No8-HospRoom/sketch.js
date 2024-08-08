@@ -10,7 +10,8 @@ let roomSound;
 let items = [];
 
 function preload() {
-  heartMonitorImg = loadImage("assets/heart-monitor.png");
+  heartMonitorImg = loadImage("assets/heart-monitor.PNG");
+  //ioenfioe
   bedImg = loadImage("assets/bed.png");
   panelImg = loadImage("assets/panel.png");
   standImg = loadImage("assets/stand.png");
