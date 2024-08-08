@@ -100,6 +100,7 @@ function draw() {
 
 }
 
+//this is bottles lol erased the table in here n drew it 
 class Table {
   constructor(startX, startY, createImg, createImg2, createImg3, createImg4, createImg5) {
     this.x = startX;

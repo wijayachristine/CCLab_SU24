@@ -143,15 +143,17 @@ function setup() {
       // let mYScaledTranslated = mouseY/scaleFactor - (height/2)/scaleFactor
       // console.log(mXScaledTranslated)
 
+       // let distance = dist(mXScaledTranslated, mYScaledTranslated, this.x, this.y);
+      // console.log(mouseX-width/2, mouseY-height/2, this.x, this.y);
+      // console.log("distance", distance)
+
       let adjustedMouseX = (mouseX - width/2 - canvasTranslatedX) / scaleFactor;
       let adjustedMouseY = (mouseY - height/2 - canvasTranslatedY) / scaleFactor;
       let d = dist(adjustedMouseX, adjustedMouseY, this.x, this.y);
-      // let distance = dist(mXScaledTranslated, mYScaledTranslated, this.x, this.y);
-      // console.log(mouseX-width/2, mouseY-height/2, this.x, this.y);
-      // console.log("distance", distance)
+     
       let radius = this.imgSize/2;
 
-      // get d betwen mouns and this.x 
+      // get d betwen mouse and this.x 
 
       // check if d is smaller than imgSize/2 times scalefactor
 
